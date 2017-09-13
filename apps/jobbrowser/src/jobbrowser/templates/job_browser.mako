@@ -1193,8 +1193,8 @@ ${ commonheader("Job Browser", "jobbrowser", user, request) | n,unicode }
           <li class="nav-header">${ _('Name') }</li>
           <li><span data-bind="text: name"></span></li>
           <!-- /ko -->
-          <li class="nav-header">${ _('Type') }</li>
-          <li><span data-bind="text: type"></span></li>
+          <li class="nav-header" data-bind="visible: ! $root.isMini()">${ _('Type') }</li>
+          <li><span data-bind="text: type, visible: ! $root.isMini()"></span></li>
           <li class="nav-header">${ _('Status') }</li>
           <li><span data-bind="text: status"></span></li>
           <li class="nav-header">${ _('User') }</li>
@@ -1206,14 +1206,16 @@ ${ commonheader("Job Browser", "jobbrowser", user, request) | n,unicode }
               <div class="bar" data-bind="style: {'width': progress() + '%'}"></div>
             </div>
           </li>
-          <li class="nav-header">${ _('Submitted') }</li>
-          <li><span data-bind="text: submitted"></span></li>
-          <li class="nav-header">${ _('Next Run') }</li>
-          <li><span data-bind="text: properties['nextTime']"></span></li>
-          <li class="nav-header">${ _('Total Actions') }</li>
-          <li><span data-bind="text: properties['total_actions']"></span></li>
-          <li class="nav-header">${ _('End time') }</li>
-          <li><span data-bind="text: properties['endTime']"></span></li>
+          <span data-bind="visible: ! $root.isMini()">
+            <li class="nav-header">${ _('Submitted') }</li>
+            <li><span data-bind="text: submitted"></span></li>
+            <li class="nav-header">${ _('Next Run') }</li>
+            <li><span data-bind="text: properties['nextTime']"></span></li>
+            <li class="nav-header">${ _('Total Actions') }</li>
+            <li><span data-bind="text: properties['total_actions']"></span></li>
+            <li class="nav-header">${ _('End time') }</li>
+            <li><span data-bind="text: properties['endTime']"></span></li>
+          </span>
         </ul>
       </div>
     </div>
